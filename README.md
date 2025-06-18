@@ -17,3 +17,16 @@ CREATE TABLE users (
     email VARCHAR(100) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+# registro
+curl -X POST http://127.0.0.1:8000/auth/register \
+  -H "Content-Type: application/json" \
+  -d "{\"username\": \"javier\", \"email\": \"javier@example.com\", \"password\": \"123456\"}"
+
+
+# login 
+
+curl -X POST http://127.0.0.1:8000/auth/login \
+  -H "Content-Type: application/json" \
+  -d "{\"username\": \"javier\", \"password\": \"123456\"}"
