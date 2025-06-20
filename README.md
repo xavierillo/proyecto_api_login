@@ -1,10 +1,10 @@
-#instalar dependencias 
+# como instalar dependencias 
 pip install -r requirements.txt
 
-#-- Correr Proyecto --
+# ejecutar proyecto local sin docker
 uvicorn app.main:app --reload
 
-#----  BD  ----
+# Base de datos
 
 CREATE DATABASE login_api;
 
@@ -30,3 +30,9 @@ curl -X POST http://127.0.0.1:8000/auth/register \
 curl -X POST http://127.0.0.1:8000/auth/login \
   -H "Content-Type: application/json" \
   -d "{\"username\": \"javier\", \"password\": \"123456\"}"
+
+
+# Docker 
+sudo docker build -t proyecto_api .
+sudo docker stop api && sudo docker rm api
+sudo docker run -d --network host --name api proyecto_api
